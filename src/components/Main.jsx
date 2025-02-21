@@ -8,15 +8,8 @@ export default function Main(){
         <li key = {ingredient}> {ingredient}</li>
     ))
 
-    function handelSubmit(event){
-          /**
-         * Like before, don't worry about this FormData stuff yet.
-         * Just use the newIngredient below to help you finish the
-         * challenge.
-         */
-        event.preventDefault()
-        const formData = new FormData(event.currentTarget)
-        console.log(formData)
+    function handelSubmit(formData){
+ 
         const newIngredient = formData.get("ingredient")
         setIngredients(prevIngredients => [...prevIngredients, newIngredient ])
 
@@ -25,7 +18,7 @@ export default function Main(){
 
     return(
         <main>
-        <form className="add-ing-form" onSubmit={handelSubmit}>
+        <form action ={handelSubmit} className="add-ing-form">
             <input type="text" placeholder="e.g. oregano" aria-label="Add Ingredient" name = "ingredient"/>
             <button>Add Ingredient</button>
         </form>
